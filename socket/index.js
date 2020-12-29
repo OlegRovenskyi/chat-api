@@ -30,18 +30,6 @@ module.exports = function(server) {
             socket.emit('get-list-of-users');
         });
 
-        socket.on('typing', () => {
-            socket.emit('typing', {
-                username: socket.username
-            });
-        });
-
-        socket.on('stop-typing', () => {
-            socket.emit('stop typing', {
-                username: socket.username
-            });
-        });
-
         socket.on('disconnect', () => {
             if (!socket.username) return;
             socket.emit('user-left', {
